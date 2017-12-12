@@ -1,0 +1,30 @@
+@CHARSET "UTF-8";
+
+.class1{
+	width: 150px;
+    height:400px; 
+    background: #ffffff; 
+    padding-left: 10px; 
+	border: 4px dashed red;
+	margin-top: 100px; 
+    margin-left: 20px;
+    white-space: normal;
+    
+}
+
+.class2{
+	width: auto;
+    height:auto; 
+    background: red; 
+    padding: 10px; 
+    border: solid 1px black; 
+    float: none;
+}
+.class3{
+	width: auto;
+    height:auto; 
+    background: green; 
+    padding: 10px; 
+    border: solid 1px black; 
+    float: none;
+}
