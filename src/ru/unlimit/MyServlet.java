@@ -80,13 +80,13 @@ public class MyServlet extends HttpServlet {
 				+ "<th width=100px>Стоимость</th></tr></table>");
 		double allSumm=0;
 		for(Radiator rad1:busketList){
-		out.println("<table width=700px><tr align=center><td width=200px >"+rad1.type+"-"+rad1.size+"</td>"
-		+"<td width=100px >"+rad1.price+"</td>"		
-		+"<td width=100px >"+rad1.count+"</td>"+
-		"<td width=100px >"+String.format(Locale.CANADA,"%.2f",rad1.price*rad1.count)
-					+ "</td>"
-					+ "<td width=200px>Удалить</td></tr></table>");
-		allSumm=allSumm+rad1.price*rad1.count;
+			out.println("<table width=700px><tr align=center><td width=200px >"+rad1.getType()+"-"+rad1.getSize()+"</td>"
+					+"<td width=100px >"+rad1.getPrice()+"</td>"		
+					+"<td width=100px >"+rad1.getCount()+"</td>"+
+					"<td width=100px >"+String.format(Locale.CANADA,"%.2f",rad1.getPrice()*rad1.getCount())
+								+ "</td>"
+								+ "<td width=200px>Удалить</td></tr></table>");
+					allSumm=allSumm+rad1.getPrice()*rad1.getCount();
 			
 		}
 		out.println("<table width=500px ><tr><td width=100px></td>"
@@ -125,7 +125,7 @@ public class MyServlet extends HttpServlet {
 		++idSF;
 		
 		for(Radiator rad1:busketList){
-			db.insertRadiator(rad1.type+"-"+rad1.size,rad1.price,rad1.count,rad1.count*rad1.price,idSF);	
+			db.insertRadiator(rad1.getType()+"-"+rad1.getSize(),rad1.getPrice(),rad1.getCount(),rad1.getCount()*rad1.getPrice(),idSF);	
 		}
 		
 		db.insertBuyer(b1.name, b1.email, b1.phone, b1.adres, b1.passport,String.valueOf(idSF));

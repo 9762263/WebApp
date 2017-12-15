@@ -134,6 +134,7 @@ public class JDBCExample {
 	        return user;
 		    
 	        }
+	  
 	  public List<Integer>  getOrdersUser(String email)  {
 		  List<Integer> orders = new ArrayList<Integer>();
 		    try {
@@ -195,4 +196,36 @@ public class JDBCExample {
 		    
 	        }
 	  
+	  public List<Radiator>  getCatalog()  {
+		  List<Radiator> list = new ArrayList<Radiator>();
+		    try {
+		  		
+	            Class.forName("com.mysql.jdbc.Driver");
+	            String url = "jdbc:mysql://localhost:3306/RADIATORS";
+	            String login = "root";
+	            String password = "";
+	            Connection con = DriverManager.getConnection(url, login, password); 
+
+	            try {
+	                Statement stmt = con.createStatement();
+	                ResultSet rs = stmt.executeQuery("SELECT name,price FROM catalog ");
+	                while (rs.next()) {
+	                Radiator rad = new Radiator();
+	                rad.setType(rs.getString("name"));
+	                rad.setPrice(rs.getDouble("price"));
+	                list.add(rad);
+	                }
+	                
+	                stmt.close();
+	            } finally {
+	                con.close();
+	            }
+	        } catch (Exception e) {
+	            e.printStackTrace();
+	        }
+		  
+	             
+	        return list;
+		    
+	        }
 }

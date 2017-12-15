@@ -215,26 +215,26 @@ public class SzotFaktura {
 			basket.addCell(cellName);
 			
 			PdfPCell cellType = new PdfPCell();
-			Paragraph typeRadiator=new Paragraph(rad.type+"-"+rad.size,font2);
+			Paragraph typeRadiator=new Paragraph(rad.getType()+"-"+rad.getSize(),font2);
 			typeRadiator.setAlignment(1);
 			cellType.addElement(typeRadiator);
 			basket.addCell(cellType);
 			
 			PdfPCell cellCount = new PdfPCell();
-			Paragraph countRadiator=new Paragraph(String.valueOf(rad.count) ,font2);
-			allCount=allCount+rad.count;
+			Paragraph countRadiator=new Paragraph(String.valueOf(rad.getCount()) ,font2);
+			allCount=allCount+rad.getCount();
 			countRadiator.setAlignment(1);
 			cellCount.addElement(countRadiator);
 			basket.addCell(cellCount);
 			
 			PdfPCell cellPrice = new PdfPCell();
-			Paragraph priceRadiator=new Paragraph(String.format(Locale.CANADA,"%.2f",rad.price) ,font2);
+			Paragraph priceRadiator=new Paragraph(String.format(Locale.CANADA,"%.2f",rad.getPrice()) ,font2);
 			priceRadiator.setAlignment(1);
 			cellPrice.addElement(priceRadiator);
 			basket.addCell(cellPrice);
 			
 			PdfPCell cellValue = new PdfPCell();
-			double valRad=rad.price*rad.count*100;
+			double valRad=rad.getPrice()*rad.getCount()*100;
 			int i1 = (int) Math.round(valRad);
 			valRad = (double)i1/100;
 			Paragraph valueRadiator=new Paragraph(String.format(Locale.CANADA,"%.2f",valRad),font2);
@@ -271,13 +271,13 @@ public class SzotFaktura {
 			allSumm=(double)i5/100;
 			
 			PdfPCell cellWeight = new PdfPCell();
-			Paragraph weightRadiator=new Paragraph(String.format(Locale.CANADA,"%.2f",rad.price),font2);
+			Paragraph weightRadiator=new Paragraph(String.format(Locale.CANADA,"%.2f",rad.getPrice()),font2);
 			weightRadiator.setAlignment(1);
 			cellWeight.addElement(weightRadiator);
 			basket.addCell(cellWeight);
 			
 			PdfPCell cellMass = new PdfPCell();
-			Paragraph massRadiator=new Paragraph(String.format(Locale.CANADA,"%.2f",rad.price*rad.count),font2);
+			Paragraph massRadiator=new Paragraph(String.format(Locale.CANADA,"%.2f",rad.getPrice()*rad.getCount()),font2);
 			massRadiator.setAlignment(1);
 			cellMass.addElement(massRadiator);
 			basket.addCell(cellMass);
